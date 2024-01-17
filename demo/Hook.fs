@@ -9,12 +9,16 @@ open Fable.Core.JS
 
 [<ReactComponent>]
 let private Component () =
-    let info = usePlacesWidget(ReactGoogleAutocompleteProps(
-        apiKey = VITE_GOOGLE_MAP_API_KEY,
-        onPlaceSelected = fun places _ _ ->
-            console.log places
-            printfn "onPlaceSelected"
-    ))
+    let info =
+        usePlacesWidget (
+            ReactGoogleAutocompleteProps(
+                apiKey = VITE_GOOGLE_MAP_API_KEY,
+                onPlaceSelected =
+                    fun places _ _ ->
+                        console.log places
+                        printfn "onPlaceSelected"
+            )
+        )
 
     Html.input [
         prop.ref info.ref
