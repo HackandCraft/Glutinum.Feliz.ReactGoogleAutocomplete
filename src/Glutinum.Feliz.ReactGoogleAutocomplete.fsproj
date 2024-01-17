@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageProjectUrl>https://github.com/HackandCraft/Glutinum.Feliz.ReactGoogleAutocomplete</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/HackandCraft/Glutinum.Feliz.ReactGoogleAutocomplete</RepositoryUrl>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <Authors>Hack and Craft</Authors>
+    <ChangelogFile>$(MSBuildThisFileDirectory)/../CHANGELOG.md</ChangelogFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NpmDependencies>
+      <NpmPackage Name="react-google-autocomplete" Version="&gt;= 2.7.3" ResolutionStrategy="Max" />
+    </NpmDependencies>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="ReactGoogleAutocomplete.fs" />
+    <Compile Include="Exports.fs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <PackageReference Include="Fable.Browser.Dom" />
+    <PackageReference Include="Fable.Core" />
+    <PackageReference Include="Feliz" />
+    <PackageReference Include="Ionide.KeepAChangelog.Tasks" PrivateAssets="all" />
+  </ItemGroup>
+</Project>
