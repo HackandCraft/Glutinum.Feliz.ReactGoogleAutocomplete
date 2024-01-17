@@ -36,6 +36,63 @@ type ReactGoogleAutocompleteProps
     member val language: string option = nativeOnly with get, set
     member val googleMapsScriptBaseUrl: string option = nativeOnly with get, set
 
+[<AllowNullLiteral>]
+[<Global>]
+type UsePlacesAutocompleteServiceConfig
+    [<ParamObject; Emit("$0")>]
+    (
+        ?apiKey: string,
+        ?libraries: ResizeArray<string>,
+        ?googleMapsScriptBaseUrl: string,
+        ?debounce: int,
+        ?options: obj, // google.maps.places.AutocompletionRequest
+        ?sessionToken: bool,
+        ?language: string
+    )
+    =
+    member val apiKey: string option = nativeOnly with get, set
+    member val libraries: ResizeArray<string> option = nativeOnly with get, set
+    member val googleMapsScriptBaseUrl: string option = nativeOnly with get, set
+    member val debounce: int option = nativeOnly with get, set
+    member val options: obj option = nativeOnly with get, set
+    member val sessionToken: bool option = nativeOnly with get, set
+    member val language: string option = nativeOnly with get, set
+
+[<AllowNullLiteral>]
+[<Global>]
+type UsePlacesAutocompleteServiceResponse
+    [<ParamObject; Emit("$0")>]
+    (
+        getPlacePredictions: (obj -> unit), // google.maps.places.AutocompletionRequest
+        getQueryPredictions: (obj -> unit), // google.maps.places.QueryAutocompletionRequest
+        refreshSessionToken: (unit -> unit),
+        ?placeService: obj, // google.maps.places.PlacesService
+        ?autocompleteSessionToken: obj, // google.maps.places.AutocompleteSessionToken
+        ?placesAutocompleteService: obj, // google.maps.places.AutocompleteService
+        ?placePredictions: ResizeArray<obj>, // google.maps.places.AutocompletePrediction
+        ?isPlacePredictionsLoading: bool,
+        ?queryPredictions: ResizeArray<obj>, // google.maps.places.QueryAutocompletePrediction
+        ?isQueryPredictionsLoading: bool
+    )
+    =
+    member val getPlacePredictions: (obj -> unit) = nativeOnly with get, set
+    member val getQueryPredictions: (obj -> unit) = nativeOnly with get, set
+    member val refreshSessionToken: (unit -> unit) = nativeOnly with get, set
+    member val placeService: obj option = nativeOnly with get, set
+    member val autocompleteSessionToken: obj option = nativeOnly with get, set
+    member val placesAutocompleteService: obj option = nativeOnly with get, set
+
+    member val placePredictions: ResizeArray<obj> option =
+        nativeOnly with get, set
+
+    member val isPlacePredictionsLoading: bool option = nativeOnly with get, set
+
+    member val queryPredictions: ResizeArray<obj> option =
+        nativeOnly with get, set
+
+    member val isQueryPredictionsLoading: bool option = nativeOnly with get, set
+
+
 [<Erase>]
 type reactGoogleAutocomplete =
 
