@@ -18,6 +18,15 @@ type Exports =
         =
         nativeOnly
 
+    [<Hook;
+      Import("default",
+             "react-google-autocomplete/lib/usePlacesAutocompleteService")>]
+    static member usePlacesAutocompleteService
+        (options: UsePlacesAutocompleteServiceConfig)
+        : UsePlacesAutocompleteServiceResponse
+        =
+        nativeOnly
+
     static member inline ReactGoogleAutocomplete
         (properties: #IReactProperty list)
         =

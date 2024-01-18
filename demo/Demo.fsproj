@@ -6,6 +6,7 @@
   <ItemGroup>
     <Compile Include="Prelude.fs" />
     <Compile Include="Hook.fs" />
+    <Compile Include="ServiceHook.fs" />
     <Compile Include="Component.fs" />
   </ItemGroup>
   <ItemGroup>
