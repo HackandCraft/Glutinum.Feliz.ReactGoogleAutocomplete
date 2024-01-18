@@ -15,6 +15,39 @@
           "Fable.Core": "3.2.8"
         }
       },
+      "Fable.Browser.Svg": {
+        "type": "Direct",
+        "requested": "[2.3.0, )",
+        "resolved": "2.3.0",
+        "contentHash": "62x6s2gdTNHe/hy1bPRA9WRfbmkVg2iQ3gPleVJ4Q+ICKzrI9aCm2F1RtXqGeir2PO3Tnmuch9bQyOO31Ozsxw==",
+        "dependencies": {
+          "FSharp.Core": "4.7.2",
+          "Fable.Browser.Dom": "2.11.0",
+          "Fable.Core": "3.0.0"
+        }
+      },
+      "Fable.Browser.Url": {
+        "type": "Direct",
+        "requested": "[1.3.2, )",
+        "resolved": "1.3.2",
+        "contentHash": "YCoP3jfRvH16JQpfYL1nf+AZQnMKzD59nBIbGBuNM4ysgqAkiUoD8d1tV9KSF0AkWwWqZYjPcUqc7wAwC0nb2A==",
+        "dependencies": {
+          "FSharp.Core": "4.7.2",
+          "Fable.Core": "3.0.0"
+        }
+      },
+      "Fable.Browser.WebGL": {
+        "type": "Direct",
+        "requested": "[1.2.0, )",
+        "resolved": "1.2.0",
+        "contentHash": "IsuRlErvZLcRymxd4St0RQnUq7fQDbT+e+Fip0MMqTfoSch60/qEKr4uvReRNtP9xI+hO+RD9OsC9qRXqIqw1A==",
+        "dependencies": {
+          "FSharp.Core": "4.7.2",
+          "Fable.Browser.Dom": "2.11.0",
+          "Fable.Browser.Event": "1.5.0",
+          "Fable.Core": "3.1.5"
+        }
+      },
       "Fable.Core": {
         "type": "Direct",
         "requested": "[4.2.0, )",

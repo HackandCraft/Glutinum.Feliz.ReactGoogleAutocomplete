@@ -23,6 +23,9 @@
   <ItemGroup />
   <ItemGroup>
     <PackageReference Include="Fable.Browser.Dom" />
+    <PackageReference Include="Fable.Browser.Svg" />
+    <PackageReference Include="Fable.Browser.Url" />
+    <PackageReference Include="Fable.Browser.WebGL" />
     <PackageReference Include="Fable.Core" />
     <PackageReference Include="Feliz" />
     <PackageReference Include="Ionide.KeepAChangelog.Tasks" PrivateAssets="all" />

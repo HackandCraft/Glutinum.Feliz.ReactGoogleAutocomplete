@@ -13,9 +13,12 @@ type ReactGoogleAutocompleteProps
     [<ParamObject; Emit("$0")>]
     (
         ?inputAutocompleteValue: string,
-        ?options: obj, // google.maps.places.AutocompleteOptions
+        ?options: Google.Maps.Places.AutocompleteOptions,
         ?onPlaceSelected:
-            (obj -> IRefValue<HTMLInputElement> -> IRefValue<obj> -> unit),
+            (Google.Maps.Places.PlaceResult
+                -> IRefValue<HTMLInputElement>
+                -> IRefValue<Google.Maps.Places.Autocomplete>
+                -> unit),
         ?libraries: ResizeArray<string>,
         ?apiKey: string,
         ?language: string,
@@ -24,11 +27,13 @@ type ReactGoogleAutocompleteProps
     =
 
     member val inputAutocompleteValue: string option = nativeOnly with get, set
-    member val options: obj option = nativeOnly with get, set
 
-    member val onPlaceSelected: (obj
+    member val options: Google.Maps.Places.AutocompleteOptions option =
+        nativeOnly with get, set
+
+    member val onPlaceSelected: (Google.Maps.Places.PlaceResult
         -> IRefValue<HTMLInputElement>
-        -> IRefValue<obj>
+        -> IRefValue<Google.Maps.Places.Autocomplete>
         -> unit) option = nativeOnly with get, set
 
     member val libraries: ResizeArray<string> option = nativeOnly with get, set
@@ -45,7 +50,7 @@ type UsePlacesAutocompleteServiceConfig
         ?libraries: ResizeArray<string>,
         ?googleMapsScriptBaseUrl: string,
         ?debounce: int,
-        ?options: obj, // google.maps.places.AutocompletionRequest
+        ?options: Google.Maps.Places.AutocompletionRequest, // google.maps.places.AutocompletionRequest
         ?sessionToken: bool,
         ?language: string
     )
@@ -54,43 +59,39 @@ type UsePlacesAutocompleteServiceConfig
     member val libraries: ResizeArray<string> option = nativeOnly with get, set
     member val googleMapsScriptBaseUrl: string option = nativeOnly with get, set
     member val debounce: int option = nativeOnly with get, set
-    member val options: obj option = nativeOnly with get, set
+
+    member val options: Google.Maps.Places.AutocompletionRequest option =
+        nativeOnly with get, set
+
     member val sessionToken: bool option = nativeOnly with get, set
     member val language: string option = nativeOnly with get, set
 
 [<AllowNullLiteral>]
-[<Global>]
-type UsePlacesAutocompleteServiceResponse
-    [<ParamObject; Emit("$0")>]
-    (
-        getPlacePredictions: (obj -> unit), // google.maps.places.AutocompletionRequest
-        getQueryPredictions: (obj -> unit), // google.maps.places.QueryAutocompletionRequest
-        refreshSessionToken: (unit -> unit),
-        ?placeService: obj, // google.maps.places.PlacesService
-        ?autocompleteSessionToken: obj, // google.maps.places.AutocompleteSessionToken
-        ?placesAutocompleteService: obj, // google.maps.places.AutocompleteService
-        ?placePredictions: ResizeArray<Google.Maps.AutocompletePrediction>,
-        ?isPlacePredictionsLoading: bool,
-        ?queryPredictions: ResizeArray<obj>, // google.maps.places.QueryAutocompletePrediction
-        ?isQueryPredictionsLoading: bool
-    )
-    =
-    member val getPlacePredictions: (obj -> unit) = nativeOnly with get, set
-    member val getQueryPredictions: (obj -> unit) = nativeOnly with get, set
-    member val refreshSessionToken: (unit -> unit) = nativeOnly with get, set
-    member val placeService: obj option = nativeOnly with get, set
-    member val autocompleteSessionToken: obj option = nativeOnly with get, set
-    member val placesAutocompleteService: obj option = nativeOnly with get, set
+type UsePlacesAutocompleteServiceResponse =
+    abstract getPlacePredictions:
+        (Google.Maps.Places.AutocompletionRequest -> unit) with get, set
 
-    member val placePredictions: ResizeArray<Google.Maps.AutocompletePrediction> option =
-        nativeOnly with get, set
+    abstract getQueryPredictions:
+        (Google.Maps.Places.QueryAutocompletionRequest -> unit) with get, set
 
-    member val isPlacePredictionsLoading: bool option = nativeOnly with get, set
+    abstract refreshSessionToken: (unit -> unit) with get, set
 
-    member val queryPredictions: ResizeArray<obj> option =
-        nativeOnly with get, set
+    abstract placesService: Google.Maps.Places.PlacesService option with get, set
 
-    member val isQueryPredictionsLoading: bool option = nativeOnly with get, set
+    abstract autocompleteSessionToken:
+        Google.Maps.Places.AutocompleteSessionToken option with get, set
+
+    abstract placesAutocompleteService: Google.Maps.Places.AutocompleteService with get, set
+
+    abstract placePredictions:
+        ResizeArray<Google.Maps.Places.AutocompletePrediction> with get, set
+
+    abstract isPlacePredictionsLoading: bool with get, set
+
+    abstract queryPredictions:
+        ResizeArray<Google.Maps.Places.QueryAutocompletePrediction> with get, set
+
+    abstract isQueryPredictionsLoading: bool with get, set
 
 
 [<Erase>]
@@ -99,12 +100,23 @@ type reactGoogleAutocomplete =
     static member inline inputAutocompleteValue(value: string) =
         Interop.mkAttr "inputAutocompleteValue" value
 
-    static member inline options(value: obj) = Interop.mkAttr "options" value
+    static member inline options
+        (value: Google.Maps.Places.AutocompleteOptions)
+        =
+        Interop.mkAttr "options" value
 
     static member inline onPlaceSelected
-        (value: obj -> IRefValue<HTMLInputElement> -> IRefValue<obj> -> unit)
+        (value:
+            Google.Maps.Places.PlaceResult
+                -> IRefValue<HTMLInputElement>
+                -> IRefValue<Google.Maps.Places.Autocomplete>
+                -> unit)
         =
-        Interop.mkAttr "onPlaceSelected" (Func<_, _, _, _>(value))
+        Interop.mkAttr
+            "onPlaceSelected"
+            (Func<Google.Maps.Places.PlaceResult, IRefValue<HTMLInputElement>, IRefValue<Google.Maps.Places.Autocomplete>, unit>(
+                value
+            ))
 
     static member inline libraries(value: ResizeArray<string>) =
         Interop.mkAttr "libraries" value

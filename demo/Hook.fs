@@ -14,8 +14,8 @@ let private Component () =
             ReactGoogleAutocompleteProps(
                 apiKey = VITE_GOOGLE_MAP_API_KEY,
                 onPlaceSelected =
-                    fun places _ _ ->
-                        console.log places
+                    fun (places: Google.Maps.Places.PlaceResult) _ _ ->
+                        console.log places.formatted_address
                         printfn "onPlaceSelected"
             )
         )
