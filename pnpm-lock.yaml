@@ -21,6 +21,11 @@ dependencies:
     specifier: ^5.0.11
     version: 5.0.11
 
+devDependencies:
+  '@types/google.maps':
+    specifier: ^3.54.10
+    version: 3.54.10
+
 packages:
 
   /@ampproject/remapping@2.2.1:
@@ -620,6 +625,10 @@ packages:
   /@types/estree@1.0.5:
     resolution: {integrity: sha512-/kYRxGDLWzHOB7q+wtSUQlFrtcdUccpfy+X+9iMBpHK8QLLhx2wIPYuS5DYtR9Wa/YlZAbIovy7qVdB1Aq6Lyw==}
     dev: false
+
+  /@types/google.maps@3.54.10:
+    resolution: {integrity: sha512-N6gwM01mKhooXaw+IKbUH7wJcIJCn8U60VoaVvom5EiQjmfgevhQ+0+/r17beXW5j8ad2x+WPr0iyOUodCw4/w==}
+    dev: true
 
   /@vitejs/plugin-react@4.2.1(vite@5.0.11):
     resolution: {integrity: sha512-oojO9IDc4nCUUi8qIR11KoQm0XFFLIwsRBwHRR4d/88IWghn1y6ckz/bJ8GHDCsYEJee8mDzqtJxh15/cisJNQ==}

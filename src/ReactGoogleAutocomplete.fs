@@ -69,7 +69,7 @@ type UsePlacesAutocompleteServiceResponse
         ?placeService: obj, // google.maps.places.PlacesService
         ?autocompleteSessionToken: obj, // google.maps.places.AutocompleteSessionToken
         ?placesAutocompleteService: obj, // google.maps.places.AutocompleteService
-        ?placePredictions: ResizeArray<obj>, // google.maps.places.AutocompletePrediction
+        ?placePredictions: ResizeArray<Google.Maps.AutocompletePrediction>,
         ?isPlacePredictionsLoading: bool,
         ?queryPredictions: ResizeArray<obj>, // google.maps.places.QueryAutocompletePrediction
         ?isQueryPredictionsLoading: bool
@@ -82,7 +82,7 @@ type UsePlacesAutocompleteServiceResponse
     member val autocompleteSessionToken: obj option = nativeOnly with get, set
     member val placesAutocompleteService: obj option = nativeOnly with get, set
 
-    member val placePredictions: ResizeArray<obj> option =
+    member val placePredictions: ResizeArray<Google.Maps.AutocompletePrediction> option =
         nativeOnly with get, set
 
     member val isPlacePredictionsLoading: bool option = nativeOnly with get, set

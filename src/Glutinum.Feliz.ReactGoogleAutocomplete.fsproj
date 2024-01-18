@@ -12,10 +12,11 @@
   </PropertyGroup>
   <PropertyGroup>
     <NpmDependencies>
-      <NpmPackage Name="react-google-autocomplete" Version="&gt;= 2.7.3" ResolutionStrategy="Max" />
+      <NpmPackage Name="react-google-autocomplete" Version="gte 2.7.3" ResolutionStrategy="Max" />
     </NpmDependencies>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="GoogleTypes.fs" />
     <Compile Include="ReactGoogleAutocomplete.fs" />
     <Compile Include="Exports.fs" />
   </ItemGroup>

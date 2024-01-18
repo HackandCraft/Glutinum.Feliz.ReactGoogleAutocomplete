@@ -18,10 +18,7 @@ let private Component () =
         )
 
     let handleOnChange =
-        fun (e: Types.Event) ->
-            let target = e.target
-            let input = target?value
-
+        fun (input: string) ->
             response.getPlacePredictions (
                 {|
                     input = input
@@ -29,32 +26,26 @@ let private Component () =
             )
 
     Html.div [
-        prop.children [
-            Html.input [
-                prop.type' "text"
-                prop.onChange handleOnChange
-            ]
-            match response.placePredictions with
-            | Some predictions ->
-                console.log predictions
-                Html.ul [
-                    prop.children (
-                        predictions
-                        |> Seq.map (fun prediction ->
-                            Html.li [
-                                prop.children [
-                                    Html.a [
-                                        prop.children [
-                                            Html.text (sprintf "%A" prediction)
-                                        ]
-                                    ]
-                                ]
-                            ]
-                        )
-                    )
-                ]
-            | None -> Html.text "No predictions"
+        Html.input [
+            prop.type' "text"
+            prop.onChange handleOnChange
         ]
+        match response.placePredictions with
+        | Some predictions ->
+            console.log predictions
+
+            Html.ul (
+                predictions
+                |> Seq.map (fun prediction ->
+                    Html.li [
+                        Html.a [
+                            Html.text prediction.description
+                        ]
+                    ]
+                )
+            )
+
+        | None -> Html.text "No predictions"
     ]
 
 let root = document.getElementById ("root") |> ReactDOM.createRoot
