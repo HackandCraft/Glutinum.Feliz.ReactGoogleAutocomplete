@@ -2,11 +2,8 @@ module Demo.ServiceHook
 
 open Feliz
 open Browser
-open Fable.Core.JsInterop
 open Glutinum.Feliz.ReactGoogleAutocomplete
 open type Glutinum.Feliz.ReactGoogleAutocomplete.Exports
-open Fable.Core.JS
-open Fable.React
 
 [<ReactComponent>]
 let private Component () =
