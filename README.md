@@ -1,6 +1,6 @@
 # Glutinum.Feliz.ReactGoogleAutocomplete
 
-Binding for [react-google-autocomplete](https://github.com/thebuilder/react-google-autocomplete)
+Binding for [react-google-autocomplete](https://github.com/ErrorPro/react-google-autocomplete)
 
 [![NuGet](https://img.shields.io/nuget/v/Glutinum.Feliz.ReactGoogleAutocomplete.svg)](https://www.nuget.org/packages/Glutinum.Feliz.ReactGoogleAutocomplete/)
 
