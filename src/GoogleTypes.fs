@@ -10204,18 +10204,18 @@ module Places =
         [<ParamObject; Emit("$0")>]
         new (
             input: string,
-            ?bounds: Google.Maps.LatLngBounds option,
-            ?componentRestrictions: Google.Maps.Places.ComponentRestrictions option,
-            ?language: string option,
-            ?location: Google.Maps.LatLng option,
-            ?locationBias: Google.Maps.LatLngBounds option,
-            ?locationRestriction: Google.Maps.LatLngBounds option,
-            ?offset: float option,
-            ?origin: Google.Maps.LatLng option,
-            ?radius: float option,
-            ?region: string option,
-            ?sessionToken: Google.Maps.Places.AutocompleteSessionToken option,
-            ?types: ResizeArray<string> option
+            ?bounds: Google.Maps.LatLngBounds,
+            ?componentRestrictions: Google.Maps.Places.ComponentRestrictions,
+            ?language: string,
+            ?location: Google.Maps.LatLng,
+            ?locationBias: Google.Maps.LatLngBounds,
+            ?locationRestriction: Google.Maps.LatLngBounds,
+            ?offset: float,
+            ?origin: Google.Maps.LatLng,
+            ?radius: float,
+            ?region: string,
+            ?sessionToken: Google.Maps.Places.AutocompleteSessionToken,
+            ?types: ResizeArray<string>
         ) = AutocompletionRequest()
 
         /// Bounds for prediction biasing. Predictions will be biased towards, but
@@ -10310,12 +10310,26 @@ instead."       )>]
 
     /// Defines the component restrictions that can be used with the autocomplete
     /// service.
-    type [<AllowNullLiteral>] ComponentRestrictions =
+    /// [<AllowNullLiteral>]
+    [<Global>]
+    [<AllowNullLiteral>]
+    type ComponentRestrictions
+        [<ParamObject; Emit("$0")>]
+        () =
+
+        [<ParamObject; Emit("$0")>]
+        new (?country: string) =
+            ComponentRestrictions()
+
+        [<ParamObject; Emit("$0")>]
+        new (?country: ResizeArray<string>) =
+            ComponentRestrictions()
+
         /// Restricts predictions to the specified country (ISO 3166-1 Alpha-2
         /// country code, case insensitive). For example, &lt;code&gt;'us'&lt;/code&gt;,
         /// &lt;code&gt;'br'&lt;/code&gt;, or &lt;code&gt;'au'&lt;/code&gt;. You can provide a single one, or
         /// an array of up to five country code strings.
-        abstract country: U2<string, ResizeArray<string>> option with get, set
+        member val country: U2<string, ResizeArray<string>> option = jsNative with get, set
 
     /// <summary>
     /// Available only in the v=beta channel: <see href="https://goo.gle/3oAthT3." />
